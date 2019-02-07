@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../etc/common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="$(Example-FSharp-Core-Version)" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(Example-Microsoft-Extensions-Logging-Version)" />
+    <PackageReference Include="Serilog" Version="$(Example-Serilog-Version)" />
+    <PackageReference Include="Serilog.Sinks.Xunit" Version="$(Example-Serilog-Sinks-Xunit-Version)" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="$(Example-Serilog-Extensions-Logging-Version)" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(Example-Microsoft-NET-Test-Sdk-Version)" />
+    <PackageReference Include="xunit" Version="$(Example-xunit-Version)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(Example-xunit-runner-visualstudio-Version)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="logging.fs" />
+    <Compile Include="test.connection.fs" />
+    <Compile Include="test.connector.fs" />
+    <Compile Include="test.factory.fs" />
+    <Compile Include="main.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\example.sql\example.sql.fsproj" />
+  </ItemGroup>
+
+</Project>
