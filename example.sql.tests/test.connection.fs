@@ -23,7 +23,7 @@ type ConnectionShould( oh: ITestOutputHelper ) =
             
         Assert.True( sut.ConnectionString.Length > 0 )
 
-        sut.Open()
+        sut.Check()
         
         let cmd =
             sut.CreateCommand "SELECT date('now')" Seq.empty
