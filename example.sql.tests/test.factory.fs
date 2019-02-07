@@ -24,6 +24,8 @@ type FactoryShould( oh: ITestOutputHelper ) =
 
         let connection =
             sut.Lookup "test"
+
+        connection.Check()
         
         let cmd =
             connection.CreateCommand "SELECT date('now')" Seq.empty
