@@ -41,19 +41,26 @@ with
                 Utilities.TryEnvironmentVariable "guestdb" (sprintf "%s_DATABASE" prefix )
         }
         
-
+type SqlServerSpecification = {
+    ConnectionString : string 
+}
+with
+    static member Make( cs ) =
+        { ConnectionString = cs }
+        
 type DbConnectionSpecification =
     | Sqlite of SqliteSpecification
     | MySql of MySqlSpecification
+    | SqlServer of SqlServerSpecification
     
 type IDbConnection =
     inherit System.IDisposable
+    abstract ConnectorType : string with get
     abstract ConnectionString : string with get
-    abstract Open : unit -> unit
+    abstract Check : unit -> unit
     abstract CreateCommand : text:string -> ps:seq<string*obj> -> System.Data.Common.DbCommand 
         
 type IDbConnectionFactory =
     inherit System.IDisposable
     abstract Create : name:string -> DbConnectionSpecification -> IDbConnection
     abstract Lookup : name:string -> IDbConnection
-    

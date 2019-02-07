@@ -1,18 +1,21 @@
 namespace Example.Sql
 
 type DbConnection( connector : DbConnector ) =
-    
+
     static member Make( connector ) =
         new DbConnection( connector ) :> IDbConnection
 
+    member this.ConnectorType
+        with get () = connector.ConnectorType
+        
     member this.Dispose () =
         connector.Dispose()
         
     member this.ConnectionString
         with get () = connector.ConnectionString
 
-    member this.Open () =
-        connector.Open()
+    member this.Check () =
+        connector.Check()
 
     member this.Close () =
         connector.Close()
@@ -39,11 +42,14 @@ type DbConnection( connector : DbConnector ) =
                 
     interface IDbConnection
         with
+            member this.ConnectorType =
+                this.ConnectorType
+                
             member this.ConnectionString =
                 this.ConnectionString
                 
-            member this.Open () =
-                this.Open()
+            member this.Check () =
+                this.Check()
                 
             member this.CreateCommand text ps =
                 this.CreateCommand text ps
