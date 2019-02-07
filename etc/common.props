@@ -4,7 +4,6 @@
     <PropertyGroup>
         <Example-Serialisation-Major>1</Example-Serialisation-Major>
         <Example-Serialisation-Minor>2</Example-Serialisation-Minor>
-
     </PropertyGroup>
 
     <PropertyGroup>
