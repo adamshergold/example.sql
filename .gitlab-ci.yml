@@ -12,7 +12,7 @@ build-test:
     - ./etc/build/zip.sh
     - curl -s https://codecov.io/bash > codecov
     - chmod +x codecov
-    - dotnet test --configuration Debug example.sql.tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+    - dotnet test example.sql.tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
     - ./codecov -f example.sql.tests/coverage.opencover.xml -t $CODECOV_TOKEN
     - dotnet pack example.sql -o $CI_PROJECT_DIR/nupkgs
     - ./etc/build/repack.sh $CI_PROJECT_DIR/nupkgs $CI_PROJECT_DIR/nupkgs.repack
