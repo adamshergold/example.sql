@@ -48,6 +48,12 @@ with
     static member Make( cs ) =
         { ConnectionString = cs }
         
+    static member MakeFromEnvironment (prefix:string) =
+        {
+            ConnectionString =
+                Utilities.TryEnvironmentVariable "localhost" (sprintf "%s_CONNECTION_STRING" prefix )
+        }
+        
 type DbConnectionSpecification =
     | Sqlite of SqliteSpecification
     | MySql of MySqlSpecification
