@@ -62,7 +62,13 @@ with
         | Sqlite(c) -> c.CreateCommand() :> System.Data.Common.DbCommand
         | MySql(c) -> c.CreateCommand() :> System.Data.Common.DbCommand
         | SqlServer(c) -> c.CreateCommand() :> System.Data.Common.DbCommand
-            
+
+    member this.BeginTransaction () =
+        match this with
+        | Sqlite(c) -> c.BeginTransaction() :> System.Data.Common.DbTransaction
+        | MySql(c) -> c.BeginTransaction() :> System.Data.Common.DbTransaction
+        | SqlServer(c) -> c.BeginTransaction() :> System.Data.Common.DbTransaction
+
     interface System.IDisposable
         with
             member this.Dispose () =
