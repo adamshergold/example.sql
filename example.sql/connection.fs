@@ -54,8 +54,8 @@ type DbConnection( connector : DbConnector ) =
             member this.Check () =
                 this.Check()
                 
-            member this.BeginTransacation () =
-                this.BeginTransacation()
+            member this.BeginTransaction () =
+                this.BeginTransaction()
                 
             member this.CreateCommand text ps =
                 this.CreateCommand text ps
