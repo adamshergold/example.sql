@@ -58,6 +58,7 @@ type IDbConnection =
     abstract ConnectorType : string with get
     abstract ConnectionString : string with get
     abstract Check : unit -> unit
+    abstract BeginTransaction : unit -> System.Data.Common.DbTransaction
     abstract CreateCommand : text:string -> ps:seq<string*obj> -> System.Data.Common.DbCommand 
         
 type IDbConnectionFactory =

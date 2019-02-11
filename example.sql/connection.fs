@@ -20,6 +20,9 @@ type DbConnection( connector : DbConnector ) =
     member this.Close () =
         connector.Close()
             
+    member this.BeginTransaction () =
+        connector.BeginTransaction()
+        
     member this.CreateCommand (text:string) (ps:seq<string*obj>): System.Data.Common.DbCommand =
         
         let cmd =
@@ -50,6 +53,9 @@ type DbConnection( connector : DbConnector ) =
                 
             member this.Check () =
                 this.Check()
+                
+            member this.BeginTransacation () =
+                this.BeginTransacation()
                 
             member this.CreateCommand text ps =
                 this.CreateCommand text ps
